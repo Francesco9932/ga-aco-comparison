@@ -109,12 +109,13 @@ class Genetic(object):
 
         child[0], child[size - 1] = 0, 0
 
-        point = random.randrange(1, size-1)
+        idx = np.random.choice(range(size-1), size=2, replace=False)
+        start, end = min(idx), max(idx)
 
-        for i in range(point, point + 1):
+        for i in range(start, end + 1):
             child[i] = parent1[i]
-        point += 1
-        point2 = point
+        point = end+1
+        point2 = start
         while child[point] in [-1, 0]:
             if child[point] != 0:
                 if parent2[point2] not in child:
@@ -151,9 +152,9 @@ class Genetic(object):
             p1, p2 = [random.randrange(1, len(chromo) - 1) for i in range(2)]
             while p1 == p2:
                 p2 = random.randrange(1, len(chromo) - 1)
-            log = chromo[p1]
+            temp = chromo[p1]
             chromo[p1] = chromo[p2]
-            chromo[p2] = log
+            chromo[p2] = temp
         return chromo
 
     def geneticAlgorithm(self):

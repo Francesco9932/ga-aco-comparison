@@ -85,7 +85,7 @@ class AntColony(object):
         path.append((prev, start))  # torna da dove siamo piartiti
         return path
 
-    # determina la possa per ogni agente
+    # determina la mossa per ogni agente
     def pick_move(self, pheromone, dist, visited):
         pheromone = np.copy(pheromone)
         pheromone[list(visited)] = 0
